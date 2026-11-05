@@ -50,3 +50,9 @@ export function obtenerResumen(tareas) {
     terminadas: obtenerTerminadas(tareas).length
   };
 }
+
+// MISIÓN 11: Búsqueda por texto
+export function buscarPorTexto(tareas, texto) {
+  const busqueda = texto.toLowerCase();
+  return tareas.filter(tarea => tarea.titulo.toLowerCase().includes(busqueda));
+}
