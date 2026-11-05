@@ -49,9 +49,10 @@ Responde aquí:
 ## Registro RED → GREEN → REFACTOR
 
 ### Misión 2 · crearTarea()
-- **Driver:** Abril Saro Arteaga · **Navigator:** Diego Gerardo Cardoso Gómez
+**Driver:** Abril Saro Arteaga · **Navigator:** Diego Gerardo Cardoso Gómez
 - **RED:** La prueba "crea una tarea pendiente con id y título" fallaba porque crearTarea() lanzaba un error en lugar de devolver un objeto.
 - **GREEN:** Hice que devolviera { id, titulo, completada: false }.
+- - **REFACTOR:** No hizo falta cambiar nada.
 
 ### Misión 3 · agregarTarea()
 **Driver:** Diego Gerardo Cardoso Gómez · **Navigator:** Abril Saro Arteaga
