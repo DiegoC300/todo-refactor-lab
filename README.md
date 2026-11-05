@@ -82,3 +82,9 @@ Responde aquí:
 - **RED:** Escribimos tres pruebas: eliminar un id existente, un id inexistente y una colección vacía. Fallaron porque `eliminarTarea()` aún no estaba implementada.
 - **GREEN:** Implementamos la función usando `filter()` con la condición `tarea.id !== id`, lo que significa "conservar todos excepto el indicado". No usamos `splice` porque mutaría el array original.
 - **REFACTOR:** No fue necesario refactorizar. `filter()` expresa perfectamente la intención de la operación y mantiene la inmutabilidad.
+
+### Misión 8 · obtenerResumen()
+- **Driver:** Abril Saro Arteaga · **Navigator:** Diego Gerardo Cardoso Gómez
+- **RED:** Escribí pruebas con colección mixta, vacía y toda terminada. Fallaron porque obtenerResumen() lanzaba un error.
+- **GREEN:** Devolví un objeto con el total y las cantidades de pendientes y terminadas.
+- **REFACTOR:** Reutilicé obtenerPendientes() y obtenerTerminadas() de la Misión 5 en lugar de repetir la lógica del filtrado.
