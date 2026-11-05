@@ -88,3 +88,16 @@ Responde aquí:
 - **RED:** Escribí pruebas con colección mixta, vacía y toda terminada. Fallaron porque obtenerResumen() lanzaba un error.
 - **GREEN:** Devolví un objeto con el total y las cantidades de pendientes y terminadas.
 - **REFACTOR:** Reutilicé obtenerPendientes() y obtenerTerminadas() de la Misión 5 en lugar de repetir la lógica del filtrado.
+
+  ### Misión 9 · Integrar con la interfaz
+**Driver:** Diego Gerardo Cardoso Gómez · **Navigator:** Abril Saro Arteaga
+- **RED:** No aplica para esta misión (las pruebas unitarias ya estaban en verde). En su lugar, realizamos pruebas de integración manuales en el navegador.
+- **GREEN:** Conectamos `app.js` con las funciones de `taskService.js`. Ahora el DOM actúa como un adaptador: lee los eventos (submit, click), delega la lógica (agregar, cambiar estado, eliminar) y vuelve a renderizar el resultado sin mezclar reglas de negocio.
+- **REFACTOR:** Eliminamos el uso de strings y el `splice` en `app.js`. Ahora todo el flujo de datos pasa por el servicio, lo que hace la aplicación mucho más mantenible.
+
+**Pruebas de integración manual (exitosas):**
+1. Alta válida: Aparece una nueva tarea pendiente y cambia el resumen.
+2. Alta inválida: Se muestra mensaje de error y no se agrega.
+3. Cambio de estado: Se tacha la tarea y cambia el resumen.
+4. Filtro: Se muestran solo las tareas correspondientes (Pendientes/Terminadas).
+5. Eliminar: Desaparece la tarea y se actualiza el resumen.
