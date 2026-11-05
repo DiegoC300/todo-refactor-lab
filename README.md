@@ -66,3 +66,9 @@ Responde aquí:
 - **RED:** Escribí dos pruebas, una con id existente y otra con id inexistente. Fallaron porque buscarTarea() lanzaba un error.
 - **GREEN:** Usé find() para devolver la tarea cuyo id coincide. Si no hay coincidencia, find() devuelve undefined.
 - **REFACTOR:** El código ya era mínimo, así que no hizo falta cambiar nada.
+
+  ### Misión 5 · obtenerPendientes() y obtenerTerminadas()
+**Driver:** Diego Gerardo Cardoso Gómez · **Navigator:** Abril Saro Arteaga
+- **RED:** Escribimos tres pruebas: una con colección mixta (para verificar que separa correctamente), una sin coincidencias y una con colección vacía. Fallaron porque las funciones `obtenerPendientes` y `obtenerTerminadas` aún no estaban implementadas.
+- **GREEN:** Implementamos ambas funciones usando `filter()`. La función `obtenerPendientes` filtra las tareas donde `!tarea.completada` es verdadero, y `obtenerTerminadas` filtra donde `tarea.completada` es verdadero. Al correr `npm test`, todas las pruebas pasaron.
+- **REFACTOR:** No fue necesario refactorizar. `filter()` expresa perfectamente la intención de seleccionar un subconjunto sin mutar el array original, y el código quedó muy legible.
