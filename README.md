@@ -52,5 +52,11 @@ Responde aquí:
 - **Driver:** Abril Saro Arteaga · **Navigator:** Diego Gerardo Cardoso Gómez
 - **RED:** La prueba "crea una tarea pendiente con id y título" fallaba porque crearTarea() lanzaba un error en lugar de devolver un objeto.
 - **GREEN:** Hice que devolviera { id, titulo, completada: false }.
+### Misión 3 · agregarTarea()
+**Driver:** Diego Gerardo Cardoso Gómez · **Navigator:** Abril Saro Arteaga
 
-Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien roles con frecuencia y no hagan commit hasta que ambos puedan explicar el código y la prueba.
+### Misión 3 · agregarTarea()
+**Driver:** Diego Gerardo Cardoso Gómez · **Navigator:** Abril Saro Arteaga
+- **RED:** Escribimos dos pruebas para `agregarTarea`: una que verifica que se agregue la tarea y otra que comprueba la inmutabilidad. Fallaron porque la función aún lanzaba un error (`throw new Error`).
+- **GREEN:** El cambio mínimo fue implementar la función usando el operador spread: `return [...tareas, nuevaTarea];`. Al ejecutar `npm test`, ambas pruebas pasaron.
+- **REFACTOR:** No hubo necesidad de refactorizar el código, ya que el operador spread es la forma más limpia, moderna y declarativa de crear un nuevo array sin mutar el original.
