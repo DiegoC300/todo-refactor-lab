@@ -125,6 +125,137 @@ describe("cambiarEstado", () => {
   });
 });
 // MISIÓN 7: prueba eliminar existente, inexistente y colección vacía.
+import { describe, it, expect } from "vitest";
+import {
+  crearTarea,
+  agregarTarea,
+  buscarTarea,
+  obtenerPendientes,
+  obtenerTerminadas,
+  cambiarEstado,
+  eliminarTarea,
+  obtenerResumen
+} from "../src/taskService.js";
+
+/*
+ * TODO REFACTOR LAB · SUITE STARTER
+ *
+ * Activa/crea pruebas misión por misión. No escribas todas las soluciones de
+ * una vez. Para cada comportamiento sigue RED → GREEN → REFACTOR.
+ */
+
+describe("crearTarea", () => {
+  it("crea una tarea pendiente con id y título", () => {
+    const id = 10;
+    const titulo = "Diseñar pruebas";
+    const tarea = crearTarea(id, titulo);
+    expect(tarea).toEqual({ id: 10, titulo: "Diseñar pruebas", completada: false });
+  });
+});
+
+describe("agregarTarea", () => {
+  it("agrega una tarea a la colección", () => {
+    const tareas = [crearTarea(1, "Tarea 1")];
+    const nueva = crearTarea(2, "Tarea 2");
+    const resultado = agregarTarea(tareas, nueva);
+    expect(resultado).toHaveLength(2);
+    expect(resultado).toContainEqual(nueva);
+  });
+
+  it("no modifica la colección original (inmutabilidad)", () => {
+    const tareas = [crearTarea(1, "Tarea 1")];
+    const original = [...tareas];
+    agregarTarea(tareas, crearTarea(2, "Tarea 2"));
+    expect(tareas).toEqual(original);
+  });
+});
+
+describe("buscarTarea", () => {
+  const tareas = [
+    { id: 1, titulo: "Revisar requisitos", completada: false },
+    { id: 2, titulo: "Diseñar pruebas", completada: true }
+  ];
+
+  it("devuelve la tarea cuando el id existe", () => {
+    const resultado = buscarTarea(tareas, 2);
+    expect(resultado).toEqual({ id: 2, titulo: "Diseñar pruebas", completada: true });
+  });
+
+  it("devuelve undefined cuando el id no existe", () => {
+    const resultado = buscarTarea(tareas, 99);
+    expect(resultado).toBeUndefined();
+  });
+});
+
+describe("obtenerPendientes y obtenerTerminadas", () => {
+  const pendiente = crearTarea(1, "Pendiente");
+  const terminada = { ...crearTarea(2, "Terminada"), completada: true };
+  const tareas = [pendiente, terminada];
+
+  it("obtenerPendientes devuelve solo las no completadas", () => {
+    expect(obtenerPendientes(tareas)).toEqual([pendiente]);
+  });
+
+  it("obtenerTerminadas devuelve solo las completadas", () => {
+    expect(obtenerTerminadas(tareas)).toEqual([terminada]);
+  });
+
+  it("devuelve array vacío si no hay coincidencias", () => {
+    expect(obtenerPendientes([])).toEqual([]);
+    expect(obtenerTerminadas([pendiente])).toEqual([]);
+  });
+});
+
+describe("cambiarEstado", () => {
+  const t1 = crearTarea(1, "Tarea 1");
+  const t2 = crearTarea(2, "Tarea 2");
+  const tareas = [t1, t2];
+
+  it("cambia el estado de la tarea correcta", () => {
+    const resultado = cambiarEstado(tareas, 1);
+    expect(resultado[0].completada).toBe(true);
+    expect(resultado[1].completada).toBe(false);
+  });
+
+  it("no modifica el objeto original", () => {
+    cambiarEstado(tareas, 1);
+    expect(t1.completada).toBe(false);
+  });
+
+  it("un id inexistente conserva la colección", () => {
+    const resultado = cambiarEstado(tareas, 99);
+    expect(resultado).toEqual(tareas);
+  });
+});
+
+// MISIÓN 7
+describe("eliminarTarea", () => {
+  it("elimina un id existente", () => {
+    const tareas = [crearTarea(1, "T1"), crearTarea(2, "T2")];
+    const resultado = eliminarTarea(tareas, 1);
+    expect(resultado).toHaveLength(1);
+    expect(resultado[0].id).toBe(2);
+  });
+
+  it("id inexistente no altera la colección", () => {
+    const tareas = [crearTarea(1, "T1")];
+    expect(eliminarTarea(tareas, 99)).toEqual(tareas);
+  });
+
+  it("colección vacía devuelve vacía", () => {
+    expect(eliminarTarea([], 1)).toEqual([]);
+  });
+});
+
+// MISIÓN 8: prueba obtenerResumen(), incluyendo colección vacía.
+
+void agregarTarea;
+void buscarTarea;
+void obtenerPendientes;
+void obtenerTerminadas;
+void cambiarEstado;
+void eliminarTarea;
+void obtenerResumen;
 // MISIÓN 8: prueba obtenerResumen(), incluyendo colección vacía.
 
 // Los imports anteriores quedan preparados para que construyas la suite de forma incremental.
