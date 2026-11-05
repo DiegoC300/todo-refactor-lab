@@ -60,19 +60,19 @@ Responde aquí:
 - **REFACTOR:** No hubo necesidad de refactorizar el código, ya que el operador spread es la forma más limpia, moderna y declarativa de crear un nuevo array sin mutar el original.
 
 ### Misión 4 · buscarTarea()
-- **Driver:** Abril Saro Arteaga · **Navigator:** Diego Gerardo Cardoso Gómez
+**Driver:** Abril Saro Arteaga · **Navigator:** Diego Gerardo Cardoso Gómez
 - **RED:** Escribí dos pruebas, una con id existente y otra con id inexistente. Fallaron porque buscarTarea() lanzaba un error.
 - **GREEN:** Usé find() para devolver la tarea cuyo id coincide. Si no hay coincidencia, find() devuelve undefined.
 - **REFACTOR:** El código ya era mínimo, así que no hizo falta cambiar nada.
 
-  ### Misión 5 · obtenerPendientes() y obtenerTerminadas()
+### Misión 5 · obtenerPendientes() y obtenerTerminadas()
 **Driver:** Diego Gerardo Cardoso Gómez · **Navigator:** Abril Saro Arteaga
 - **RED:** Escribimos tres pruebas: una con colección mixta (para verificar que separa correctamente), una sin coincidencias y una con colección vacía. Fallaron porque las funciones `obtenerPendientes` y `obtenerTerminadas` aún no estaban implementadas.
 - **GREEN:** Implementamos ambas funciones usando `filter()`. La función `obtenerPendientes` filtra las tareas donde `!tarea.completada` es verdadero, y `obtenerTerminadas` filtra donde `tarea.completada` es verdadero. Al correr `npm test`, todas las pruebas pasaron.
 - **REFACTOR:** No fue necesario refactorizar. `filter()` expresa perfectamente la intención de seleccionar un subconjunto sin mutar el array original, y el código quedó muy legible.
 
 ### Misión 6 · cambiarEstado()
-- **Driver:** Abril Saro Arteaga · **Navigator:** Diego Gerardo Cardoso Gómez
+**Driver:** Abril Saro Arteaga · **Navigator:** Diego Gerardo Cardoso Gómez
 - **RED:** Escribí pruebas para el cambio correcto, otra tarea intacta, id inexistente y no mutación. Fallaron porque cambiarEstado() lanzaba un error.
 - **GREEN:** Usé map() y spread para devolver una nueva colección donde solo la tarea con ese id tiene completada invertida.
 - **REFACTOR:** El código ya era mínimo, así que no hizo falta cambiar nada.
@@ -84,12 +84,12 @@ Responde aquí:
 - **REFACTOR:** No fue necesario refactorizar. `filter()` expresa perfectamente la intención de la operación y mantiene la inmutabilidad.
 
 ### Misión 8 · obtenerResumen()
-- **Driver:** Abril Saro Arteaga · **Navigator:** Diego Gerardo Cardoso Gómez
+**Driver:** Abril Saro Arteaga · **Navigator:** Diego Gerardo Cardoso Gómez
 - **RED:** Escribí pruebas con colección mixta, vacía y toda terminada. Fallaron porque obtenerResumen() lanzaba un error.
 - **GREEN:** Devolví un objeto con el total y las cantidades de pendientes y terminadas.
 - **REFACTOR:** Reutilicé obtenerPendientes() y obtenerTerminadas() de la Misión 5 en lugar de repetir la lógica del filtrado.
 
-  ### Misión 9 · Integrar con la interfaz
+### Misión 9 · Integrar con la interfaz
 **Driver:** Diego Gerardo Cardoso Gómez · **Navigator:** Abril Saro Arteaga
 - **RED:** No aplica para esta misión (las pruebas unitarias ya estaban en verde). En su lugar, realizamos pruebas de integración manuales en el navegador.
 - **GREEN:** Conectamos `app.js` con las funciones de `taskService.js`. Ahora el DOM actúa como un adaptador: lee los eventos (submit, click), delega la lógica (agregar, cambiar estado, eliminar) y vuelve a renderizar el resultado sin mezclar reglas de negocio.
