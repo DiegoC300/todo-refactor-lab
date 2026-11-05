@@ -7,26 +7,19 @@ import {
   obtenerTerminadas,
   cambiarEstado,
   eliminarTarea,
-  obtenerResumen
+  obtenerResumen,
+  buscarPorTexto // <-- Agregado para la Misión 11
 } from "../src/taskService.js";
 
 /*
  * TODO REFACTOR LAB · SUITE STARTER
- *
- * Activa/crea pruebas misión por misión. No escribas todas las soluciones de
- * una vez. Para cada comportamiento sigue RED → GREEN → REFACTOR.
  */
 
 describe("crearTarea", () => {
   it("crea una tarea pendiente con id y título", () => {
-    // Arrange
     const id = 10;
     const titulo = "Diseñar pruebas";
-
-    // Act
     const tarea = crearTarea(id, titulo);
-
-    // Assert
     expect(tarea).toEqual({ id: 10, titulo: "Diseñar pruebas", completada: false });
   });
 });
@@ -144,13 +137,11 @@ describe("obtenerResumen", () => {
     ];
 
     const resumen = obtenerResumen(tareas);
-
     expect(resumen).toEqual({ total: 3, pendientes: 2, terminadas: 1 });
   });
 
   it("devuelve ceros con una colección vacía", () => {
     const resumen = obtenerResumen([]);
-
     expect(resumen).toEqual({ total: 0, pendientes: 0, terminadas: 0 });
   });
 
@@ -161,9 +152,30 @@ describe("obtenerResumen", () => {
     ];
 
     const resumen = obtenerResumen(tareas);
-
     expect(resumen).toEqual({ total: 2, pendientes: 0, terminadas: 2 });
   });
 });
 
-//MISÓN 9
+// MISIÓN 11: Pruebas para buscarPorTexto
+describe("buscarPorTexto", () => {
+  const tareas = [
+    { id: 1, titulo: "Diseñar pruebas", completada: false },
+    { id: 2, titulo: "Refactorizar código", completada: false }
+  ];
+
+  it("encuentra tareas que contienen el texto (case-insensitive)", () => {
+    expect(buscarPorTexto(tareas, "PRUEBAS")).toEqual([tareas[0]]);
+  });
+
+  it("devuelve vacío si no hay coincidencias", () => {
+    expect(buscarPorTexto(tareas, "xyz")).toEqual([]);
+  });
+});
+
+void agregarTarea;
+void buscarTarea;
+void obtenerPendientes;
+void obtenerTerminadas;
+void cambiarEstado;
+void eliminarTarea;
+void obtenerResumen;
