@@ -71,7 +71,13 @@ Responde aquí:
 - **GREEN:** Implementamos ambas funciones usando `filter()`. La función `obtenerPendientes` filtra las tareas donde `!tarea.completada` es verdadero, y `obtenerTerminadas` filtra donde `tarea.completada` es verdadero. Al correr `npm test`, todas las pruebas pasaron.
 - **REFACTOR:** No fue necesario refactorizar. `filter()` expresa perfectamente la intención de seleccionar un subconjunto sin mutar el array original, y el código quedó muy legible.
 
-  ### Misión 7 · eliminarTarea()
+### Misión 6 · cambiarEstado()
+- **Driver:** Abril Saro Arteaga · **Navigator:** Diego Gerardo Cardoso Gómez
+- **RED:** Escribí pruebas para el cambio correcto, otra tarea intacta, id inexistente y no mutación. Fallaron porque cambiarEstado() lanzaba un error.
+- **GREEN:** Usé map() y spread para devolver una nueva colección donde solo la tarea con ese id tiene completada invertida.
+- **REFACTOR:** El código ya era mínimo, así que no hizo falta cambiar nada.
+
+### Misión 7 · eliminarTarea()
 **Driver:** Diego Gerardo Cardoso Gómez · **Navigator:** Abril Saro Arteaga
 - **RED:** Escribimos tres pruebas: eliminar un id existente, un id inexistente y una colección vacía. Fallaron porque `eliminarTarea()` aún no estaba implementada.
 - **GREEN:** Implementamos la función usando `filter()` con la condición `tarea.id !== id`, lo que significa "conservar todos excepto el indicado". No usamos `splice` porque mutaría el array original.
