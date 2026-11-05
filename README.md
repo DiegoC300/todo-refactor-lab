@@ -41,11 +41,11 @@ Responde aquí:
 
 ## Registro RED → GREEN → REFACTOR
 
-Documenta al menos una iteración:
-
-- **RED:** ¿qué prueba escribiste y por qué falló?
-- **GREEN:** ¿cuál fue el cambio mínimo que la hizo pasar?
-- **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
+### Misión 2 · crearTarea()
+- **Driver:** [tu nombre] · **Navigator:** [tu compañero]
+- **RED:** La prueba "crea una tarea pendiente con id y título" fallaba porque crearTarea() lanzaba un error en lugar de devolver un objeto.
+- **GREEN:** Hice que devolviera { id, titulo, completada: false }.
+- **REFACTOR:** El código ya era mínimo, así que no hizo falta cambiar nada.
 
 ## Pair Programming
 
