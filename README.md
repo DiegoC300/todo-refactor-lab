@@ -52,8 +52,6 @@ Responde aquí:
 - **Driver:** Abril Saro Arteaga · **Navigator:** Diego Gerardo Cardoso Gómez
 - **RED:** La prueba "crea una tarea pendiente con id y título" fallaba porque crearTarea() lanzaba un error en lugar de devolver un objeto.
 - **GREEN:** Hice que devolviera { id, titulo, completada: false }.
-### Misión 3 · agregarTarea()
-**Driver:** Diego Gerardo Cardoso Gómez · **Navigator:** Abril Saro Arteaga
 
 ### Misión 3 · agregarTarea()
 **Driver:** Diego Gerardo Cardoso Gómez · **Navigator:** Abril Saro Arteaga
@@ -72,3 +70,9 @@ Responde aquí:
 - **RED:** Escribimos tres pruebas: una con colección mixta (para verificar que separa correctamente), una sin coincidencias y una con colección vacía. Fallaron porque las funciones `obtenerPendientes` y `obtenerTerminadas` aún no estaban implementadas.
 - **GREEN:** Implementamos ambas funciones usando `filter()`. La función `obtenerPendientes` filtra las tareas donde `!tarea.completada` es verdadero, y `obtenerTerminadas` filtra donde `tarea.completada` es verdadero. Al correr `npm test`, todas las pruebas pasaron.
 - **REFACTOR:** No fue necesario refactorizar. `filter()` expresa perfectamente la intención de seleccionar un subconjunto sin mutar el array original, y el código quedó muy legible.
+
+  ### Misión 7 · eliminarTarea()
+**Driver:** Diego Gerardo Cardoso Gómez · **Navigator:** Abril Saro Arteaga
+- **RED:** Escribimos tres pruebas: eliminar un id existente, un id inexistente y una colección vacía. Fallaron porque `eliminarTarea()` aún no estaba implementada.
+- **GREEN:** Implementamos la función usando `filter()` con la condición `tarea.id !== id`, lo que significa "conservar todos excepto el indicado". No usamos `splice` porque mutaría el array original.
+- **REFACTOR:** No fue necesario refactorizar. `filter()` expresa perfectamente la intención de la operación y mantiene la inmutabilidad.
