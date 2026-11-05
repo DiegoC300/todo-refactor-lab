@@ -60,3 +60,9 @@ Responde aquí:
 - **RED:** Escribimos dos pruebas para `agregarTarea`: una que verifica que se agregue la tarea y otra que comprueba la inmutabilidad. Fallaron porque la función aún lanzaba un error (`throw new Error`).
 - **GREEN:** El cambio mínimo fue implementar la función usando el operador spread: `return [...tareas, nuevaTarea];`. Al ejecutar `npm test`, ambas pruebas pasaron.
 - **REFACTOR:** No hubo necesidad de refactorizar el código, ya que el operador spread es la forma más limpia, moderna y declarativa de crear un nuevo array sin mutar el original.
+
+### Misión 4 · buscarTarea()
+- **Driver:** Abril Saro Arteaga · **Navigator:** Diego Gerardo Cardoso Gómez
+- **RED:** Escribí dos pruebas, una con id existente y otra con id inexistente. Fallaron porque buscarTarea() lanzaba un error.
+- **GREEN:** Usé find() para devolver la tarea cuyo id coincide. Si no hay coincidencia, find() devuelve undefined.
+- **REFACTOR:** El código ya era mínimo, así que no hizo falta cambiar nada.
