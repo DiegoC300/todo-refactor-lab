@@ -48,6 +48,7 @@ describe("agregarTarea", () => {
     expect(tareas).toEqual(original);
   });
 });
+
 // MISIÓN 4: prueba id existente e inexistente para buscarTarea().
 describe("buscarTarea", () => {
   const tareas = [
@@ -71,7 +72,27 @@ describe("buscarTarea", () => {
     expect(resultado).toBeUndefined();
   });
 });
+
 // MISIÓN 5: prueba colección mixta, sin coincidencias y vacía.
+describe("obtenerPendientes y obtenerTerminadas", () => {
+  const pendiente = crearTarea(1, "Pendiente");
+  const terminada = { ...crearTarea(2, "Terminada"), completada: true };
+  const tareas = [pendiente, terminada];
+
+  it("obtenerPendientes devuelve solo las no completadas", () => {
+    expect(obtenerPendientes(tareas)).toEqual([pendiente]);
+  });
+
+  it("obtenerTerminadas devuelve solo las completadas", () => {
+    expect(obtenerTerminadas(tareas)).toEqual([terminada]);
+  });
+
+  it("devuelve array vacío si no hay coincidencias", () => {
+    expect(obtenerPendientes([])).toEqual([]);
+    expect(obtenerTerminadas([pendiente])).toEqual([]);
+  });
+});
+
 // MISIÓN 6: prueba cambio correcto, otra tarea intacta e id inexistente.
 // MISIÓN 7: prueba eliminar existente, inexistente y colección vacía.
 // MISIÓN 8: prueba obtenerResumen(), incluyendo colección vacía.
