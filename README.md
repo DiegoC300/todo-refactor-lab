@@ -28,16 +28,23 @@ La primera prueba está preparada para fallar: es el punto de partida de la **Mi
 
 Responde aquí:
 
-1. ¿Dónde almacenarías ahora el estado `completada` de una tarea?
-2. ¿Qué ocurriría si mañana cada tarea necesita prioridad, fecha o responsable?
-3. ¿Qué parte del código representa datos y qué parte representa interfaz?
-4. ¿Qué comportamiento debemos conservar durante el refactor?
+1. **¿Dónde almacenarías ahora el estado `completada` de una tarea?**
+   En una propiedad dentro de un objeto tarea. En lugar de ser solo un string, la tarea ahora es un objeto como `{ id: 1, titulo: "Diseñar pruebas", completada: false }`. El estado vive dentro del objeto de la tarea.
 
-### Tres comportamientos observables que NO deben cambiar
+2. **¿Qué ocurriría si mañana cada tarea necesita prioridad, fecha o responsable?**
+   Si usáramos strings, tendríamos que crear arrays paralelos o separar el texto con comas (lo cual es propenso a errores). Al usar objetos, simplemente agregamos nuevas propiedades al objeto (ej. `{ id, titulo, completada, prioridad, fecha }`) sin afectar el resto de la lógica. El modelo evoluciona sin romperse.
 
-1. 
-2. 
-3. 
+3. **¿Qué parte del código representa datos y qué parte representa interfaz?**
+   - **Datos:** El array `tareas` y las propiedades de cada tarea (`id`, `titulo`, `completada`).
+   - **Interfaz:** La función `mostrarTareas()`, el uso de `document.querySelector`, `lista.innerHTML` y la manipulación de elementos HTML.
+
+4. **¿Qué comportamiento debemos conservar durante el refactor?**
+   Debemos conservar las reglas de negocio y la funcionalidad visible: poder agregar una tarea, eliminarla, cambiar su estado (pendiente/terminada), filtrar la vista para mostrar solo un tipo de tareas y que el resumen (total, pendientes, terminadas) se actualice correctamente.
+
+1. Al agregar una tarea con un título válido, esta debe aparecer en la lista y el total del resumen debe aumentar en 1.
+2. Al marcar el estado de una tarea, su texto debe reflejar el cambio (ej. tacharse) y los contadores del resumen deben actualizarse.
+3. Los filtros de "Pendientes" y "Terminadas" solo deben mostrar las tareas que correspondan a ese estado, ocultando el resto, sin eliminar los datos originales.
+## Pair Programming
 
 ## Registro RED → GREEN → REFACTOR
 
@@ -45,8 +52,5 @@ Responde aquí:
 - **Driver:** Abril Saro Arteaga · **Navigator:** Diego Gerardo Cardoso Gómez
 - **RED:** La prueba "crea una tarea pendiente con id y título" fallaba porque crearTarea() lanzaba un error en lugar de devolver un objeto.
 - **GREEN:** Hice que devolviera { id, titulo, completada: false }.
-- **REFACTOR:** El código ya era mínimo, así que no hizo falta cambiar nada.
-
-## Pair Programming
 
 Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien roles con frecuencia y no hagan commit hasta que ambos puedan explicar el código y la prueba.
