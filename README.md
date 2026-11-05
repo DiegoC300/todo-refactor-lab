@@ -102,3 +102,8 @@ Responde aquí:
 3. Cambio de estado: Se tacha la tarea y cambia el resumen.
 4. Filtro: Se muestran solo las tareas correspondientes (Pendientes/Terminadas).
 5. Eliminar: Desaparece la tarea y se actualiza el resumen.
+
+### Misión 10 · Refactor final
+**Driver:** Diego Gerardo Cardoso Gómez · **Navigator:** Abril Saro Arteaga
+- **Revisión:** Se auditó `taskService.js` y `app.js`. Se confirmó que no hay duplicación de código, las funciones tienen una única responsabilidad y los nombres expresan claramente su intención.
+- **Resultado:** El código no requirió cambios estructurales adicionales. La suite de pruebas se mantiene 100% en verde, demostrando que el diseño es robusto y mantenible.
